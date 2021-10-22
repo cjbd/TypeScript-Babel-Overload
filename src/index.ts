@@ -5,7 +5,7 @@ export class Point {
         this.y = y
     }
 
-    [Symbol.for('+')](other: any) {
+    [Symbol.for('+')](other: Point) {
         const x = this.x + other.x
         const y = this.y + other.y
         return new Point(x, y)
@@ -18,5 +18,6 @@ export class Point {
 // Check overloads work
 const p1 = new Point(5, 5)
 const p2 = new Point(2, 3)
-const p3 = p1 + p2
-console.log(p3)
+// @ts-ignore: operator overloading
+const p3 = p1 + p2;
+console.log(`p3 = (${p3.x}, ${p3.y})`)
