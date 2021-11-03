@@ -1,4 +1,10 @@
-export class Point {
+import {transpilerCore} from './transpiler';
+
+export * from './transpiler';
+
+const src = 
+`
+class Point {
 
     constructor(x: number, y: number) {
         this.x = x
@@ -20,4 +26,10 @@ const p1 = new Point(5, 5)
 const p2 = new Point(2, 3)
 // @ts-ignore: operator overloading
 const p3 = p1 + p2;
-console.log(`p3 = (${p3.x}, ${p3.y})`)
+console.log(p3.x);
+console.log(p3.y)
+`;
+
+const out = transpilerCore(src);
+
+console.log(out);
